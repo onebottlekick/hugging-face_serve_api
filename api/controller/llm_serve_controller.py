@@ -32,9 +32,11 @@ async def create_chat_completion(
         ]
 
     output = llm_api_service.completion(messages, request)
-    choices = ChatCompletionResponseChoice(
-        index=len(choices), message=ChatMessage(role="assistant", content=output)
-    )
+    choices = [
+        ChatCompletionResponseChoice(
+            index=0, message=ChatMessage(role="assistant", content=output)
+        )
+    ]
     return ChatCompletionResponse(choices=choices)
 
 
