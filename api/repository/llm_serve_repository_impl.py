@@ -73,7 +73,7 @@ class LLMServeRepositoryImpl(LLMServeRepository):
         do_sample=True,
         **kwargs
     ):
-        device = self.get_device(device)
+        device = self.get_device()
         prompt = " ".join([i.content for i in input])
         inputs = tokenizer(prompt, return_tensors="pt", padding=True)
         input_ids = inputs["input_ids"].to(device)

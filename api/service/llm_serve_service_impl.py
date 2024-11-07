@@ -9,11 +9,11 @@ class LLMServeServiceImpl(LLMServeService):
 
     def completion(self, messages, request):
         model, tokenizer = self.llm_repository.load_model(self.MODEL_ID)
-        output = self.__llm_repository.predict(
+        output = self.llm_repository.predict(
             messages,
             model,
             tokenizer,
-            max_new_tokens=request.max_new_tokens,
+            max_new_tokens=request.max_tokens,
             top_p=request.top_p,
             temperature=request.temperature,
             top_k=request.top_k,
